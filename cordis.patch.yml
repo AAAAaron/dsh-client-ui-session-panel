@@ -1,0 +1,10 @@
+# dsh-client-ui-session-panel 的 bundle patch：把本插件的宿主半侧（空 apply，仅用于在
+# Loader 里占位）挂进 profile 组合；浏览器半侧由 package.json 的 dsh.client 声明，
+# 经 exports["./client"] 由宿主在 /plugins/<包名>/client.js 提供给 Web GUI。
+#
+# 启用方式（profile 的 package.json 需同时具备两项）：
+#   dependencies 里加 "dsh-client-ui-session-panel": "link:<本目录>"
+#   dsh.profile.bundles 里加 "dsh-client-ui-session-panel"
+- insert:
+    - id: ui-session-panel
+      name: 'dsh-client-ui-session-panel'
