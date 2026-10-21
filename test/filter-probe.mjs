@@ -1,7 +1,7 @@
 import { createRequire } from "node:module";
 import { writeFileSync } from "node:fs";
 const require = createRequire(import.meta.url);
-const WebSocket = require("/Users/ray/.dsh-clean-test/profiles/web/node_modules/ws");
+const WebSocket = require(process.env.DSH_WS_MODULE || "ws");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const CDP = process.env.DSH_CDP || "http://127.0.0.1:9222";
 const targets = await (await fetch(CDP + "/json/list")).json();
